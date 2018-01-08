@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>hello panpan</title>
+</head>
+<body>
+    <div id ="show">
+    </div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(function () {
+        $.get("/show",function (res) {
+            var html="";
+            for (var i=0;i<res.length;i++){
+                var item = res[i].fields
+                html+= "<span>"+item.title+"</span>"+"<span>"+item.link+"</span>"+"<span>"+item.Price+"</span>"+"<span>"+item.totlePrice+"</span>"+"<span>"+item.Price+"</span><br>"
+            }
+            $("#show").html(html)
+      });
+    });
+</script>
+</html>

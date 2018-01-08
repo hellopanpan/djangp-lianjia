@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>请输入两个数字</p>
+<form action="/add/" method="get">
+     <br />{% csrf_token %}<br />
+    a: <input type="text" id="a" name="user"> <br>
+    b: <input type="text" id="b" name="password"> <br>
+    <p>result: <span id='result'></span></p>
+    <button type="button" id='sum'>提交</button>
+</form>
+<form action="/add/" method="get">
+     <br />{% csrf_token %}<br />
+    a: <input type="text" id="c" name="user"> <br>
+    b: <input type="text" id="d" name="password"> <br>
+    <p>result: <span id='result2'></span></p>
+    <button type="button" id='register'>提交</button>
+</form>
+
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $("#sum").click(function(){
+        var a = $("#a").val();
+        var b = $("#b").val();
+
+        $.post("/login",{'user':a,'password':b}, function(ret){
+            $('#result').html(ret)
+        })
+      });
+      $("#register").click(function(){
+        var a = $("#c").val();
+        var b = $("#d").val();
+
+        $.post("/register",{'user':a,'password':b}, function(ret){
+            $('#result2').html(ret)
+        })
+      });
+    });
+</script>
+</body>
+</html>
